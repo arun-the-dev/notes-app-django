@@ -1,0 +1,32 @@
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logout-button {
+  background-color: #d2372c; /* Red color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-right: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+.logout-button:hover {
+  background-color: #ac2828;
+}
+.nav-right img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 0.6rem;
+  border: 2px solid #4e54c8;
+}
+.nav-right span {
+  font-weight: bold;
+  color: #333;
+}

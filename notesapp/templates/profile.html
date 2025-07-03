@@ -1,0 +1,15 @@
+
+
+
+<div class="nav-right">
+    <form method="post" action="/logout/">
+        {% csrf_token %}
+        <button type="submit" class="logout-button">logout</button>
+    </form>
+    <a href="{% url 'user-update' %}" style="text-decoration: none">
+        <div class="profile">
+        <img src="{{ user.profile.profile_pic.url }}" alt="Profile Photo" />
+        <span>{{ user.username }}</span>
+    </div>
+</a>
+</div>

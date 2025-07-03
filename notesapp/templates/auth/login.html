@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Login {% endblock title %}
+
+{% block style %}
+  <link rel="stylesheet" href="{% static 'css/auth/login.css' %}">
+
+{% endblock style %}
+
+{% block content %}
+  <div class="login-container">
+    <h2>Login</h2>
+    <form method="POST" autocomplete="off">
+      {% csrf_token %} {% if form.non_field_errors %}
+      <span class="error">Incorrect Username or Password </span>
+      {% endif %}
+      <label for="id_username">Username</label>
+      {{ form.username }}
+      <label for="id_password">Password</label>
+      {{ form.password }}
+      <div style="width: 100%;display: flex; justify-content: center;">
+        <button type="submit">Login</button>
+
+      </div>
+    </form>
+    <p>
+      Don't have an account? <a href="{% url 'register' %}">Register here</a>
+    </p>
+  </div>
+{% endblock content %}
+    
+

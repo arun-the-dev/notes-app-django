@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}<link rel="stylesheet" href="{% static 'css/auth/update.css' %}">{% endblock style %}
+
+{% block content %}
+  <div class="register-container">
+    <div style="display: flex; width: 100%; align-items: center;">
+      <button type="button" class="back-button" onclick="history.back()">Back</button>
+      <h2>Register</h2>
+    </div>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %} 
+      {{ form.non_field_errors }}
+      <input type="file" name="profile_pic" id="id_profile_pic" style="display: none;" onchange="handleImageChange(event)"/>
+      <div style="display: flex; justify-content: center;width: 100%;">
+        <img class = "profile_image" id ="profile_image" src="{{profile_form.instance.profile_pic.url}}" alt="Profile Photo" style="  
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: contain;
+      margin-right: 0.6rem;
+      border: 2px solid #4e54c8;" onclick="document.getElementById('id_profile_pic').click()"/>
+      </div>
+      
+      {% for error in field.errors %}
+        <p class="error">{{ error }}</p>
+      {% endfor %} 
+      {% for field in user_form %}
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+        {% for error in field.errors %}
+          <p class="error">{{ error }}</p>
+        {% endfor %} 
+      {% endfor %}
+      <button type="submit">Update</button>
+    </form>
+    <script>
+    function handleImageChange(event){
+      var imageInputUrl = URL.createObjectURL(event.target.files[0])
+      var profileImg = document.getElementById("profile_image")
+      profileImg.src = imageInputUrl
+    }
+    </script>
+  </div>
+{% endblock content %}

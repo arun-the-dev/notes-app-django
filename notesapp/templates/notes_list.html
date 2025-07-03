@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Your Notes {% endblock title %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/notes_list.css' %}">
+<link rel="stylesheet" href="{% static "css/notes_delete.css" %}">
+{% endblock style %}
+
+{% block content %}
+  <h1>Your Notes</h1>
+
+  {% if notes %}
+    {% for note in notes %}
+  <div class="note">
+    <div>
+      <div class="note-title">{{ note.title }}</div>
+      <div class="note-content">{{ note.content }}</div>
+    </div>
+    <div>
+      <a class="edit-note" href="{% url 'note-update' note.id %}">Edit</a>
+      <a class="delete-note" href="{% url 'note-delete' note.id %}"
+        >Delete</a>
+    </div>
+  </div>
+    {% endfor %} 
+  {% else %}
+  <p>No notes found. Start by adding one!</p>
+  {% endif %}
+
+  <a class="add-note-btn" href="{% url 'note-create' %}">+ Add Note</a>
+
+{% endblock content %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Register{% endblock title %}
+
+
+{% block style %}<link rel="stylesheet" href="{% static 'css/auth/register.css' %}">{% endblock style %}
+
+
+{% block content %}
+  <div class="register-container">
+    <h2>Register</h2>
+
+    <form method="POST" enctype="multipart/form-data" autocomplete="off">
+      {% csrf_token %} 
+      {{ form.non_field_errors }} 
+      <input id="id_profile_pic" name="profile_pic" type="file" style="display: none;" onchange="handleImageChange(event)" />
+
+      <div style="width: 100%; text-align: center;" >
+      <img class="profile_image" src="{% static 'images/default.jpeg' %}" onclick="document.getElementById('id_profile_pic').click();"/>
+      </div>
+
+      {% for error in field.errors %}
+        <p class="error">{{ error }}</p>
+      {% endfor %} 
+
+      {% for field in user_form %}
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+        {% for error in field.errors %}
+          <p class="error">{{ error }}</p>
+        {% endfor %} 
+      {% endfor %}
+      <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+    <script>
+      function handleImageChange(event){
+        imageUrl = URL.createObjectURL(event.target.files[0])
+        imageShower = document.querySelector(".profile_image")
+        imageShower.src = imageUrl
+      }
+    </script>
+  </div>
+{% endblock content %}
+
+

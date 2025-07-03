@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Add Note {% endblock title %}
+{% block style %}<link rel="stylesheet" href="{% static 'css/notes_creation_update.css' %}">{% endblock style %}
+
+{% block content %}
+  <button type="button" class="back-button" onclick="history.back()">
+    Back
+  </button>
+  <div class="add-note">
+    <h2>Add a New Note</h2>
+    <form method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        {{ form.title.label_tag }} {{ form.title }}
+        {% for error in form.title.errors %}
+        <p class="error">{{ error }}</p>
+        {% endfor %}
+      </div>
+      <div class="form-group">
+        {{ form.content.label_tag }} 
+        {{ form.content }} 
+        {% for error in form.content.errors %}
+        <p class="error">{{ error }}</p>
+        {% endfor %}
+      </div>
+      <button type="submit">Add Note</button>
+    </form>
+  </div>
+
+{% endblock content %}

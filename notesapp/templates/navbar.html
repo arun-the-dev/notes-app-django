@@ -1,0 +1,30 @@
+{% load static %}
+ {% block style %}
+
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+<link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+
+{% endblock style %}
+
+<nav class="navbar">
+  <div class="nav-left">
+    <h2>My Notes App</h2>
+
+    <a href="{% url 'notes-list' %}" class="refresh-button"> &#x21bb;</a>
+
+  </div>
+  {% if user.username %}
+  <div class="nav-center">
+    <form method="get" style="display: flex; align-items: center; gap: 10px; justify-content:center;">
+      <input
+        class="searchbar"
+        type="text"
+        placeholder="Search notes..."
+        name="search"
+      />
+      <button class="primary-btn" type="submit">search</button>
+    </form>
+  </div>
+
+  {% include 'profile.html' with user=user %} {% endif %}
+</nav>

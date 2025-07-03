@@ -1,0 +1,60 @@
+h1 {
+  text-align: center;
+  color: #4e54c8;
+  margin-bottom: 1.5rem;
+}
+.note {
+  background: #f1f1f1;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.note-title {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+.note-content {
+  color: #555;
+}
+.add-note-btn {
+  display: block;
+  width: fit-content;
+  background: #4e54c8;
+  color: white;
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 1rem auto;
+  text-align: center;
+}
+.add-note-btn:hover {
+  background: #3b3f9d;
+}
+.edit-note {
+  background: #c4bf44;
+  color: white;
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+}
+.edit-note:hover {
+  background-color: #9f9f3f;
+}
+.delete-note {
+  background: #c44444;
+  color: white;
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+}
+.delete-note:hover {
+  background-color: #9f3f3f;
+}
